@@ -67,7 +67,7 @@ testGetServicesPhoneNum**:
     @Test
     public void testLogNewInquiry() throws SQLException {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ensf380project", "postgres", "Debodam35");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ensf380project", "oop", "ucalgary");
             
             // Prepare test data
             String firstName = "Dominik";
@@ -92,7 +92,7 @@ testGetServicesPhoneNum**:
     @Test
     public void testSearchForInquirer() throws SQLException {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ensf380project", "postgres", "Debodam35");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ensf380project", "oop", "ucalgary");
             
             // Prepare test data
             String firstName = "Dominik";

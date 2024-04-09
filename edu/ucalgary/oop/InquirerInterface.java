@@ -23,7 +23,7 @@ public class InquirerInterface {
         System.out.println("Welcome to the Inquiry Management System");
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ensf380project", "postgres", "Debodam35");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ensf380project", "oop", "ucalgary");
             while (true) {
                 System.out.println("\nMenu:");
                 System.out.println("1. Log a new inquiry");
