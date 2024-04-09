@@ -5,12 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class represents an interface for managing inquiries in a database system.
+ * It allows users to log new inquiries, search for existing inquiries, and exit the system.
+ * The interface connects to a PostgreSQL database using JDBC.
+ */
 public class InquirerInterface {
     private static final Scanner scanner = new Scanner(System.in);
     private static List<Inquirer> inquirers = new ArrayList<>();
     
-    /** 
-     * @param args
+    /**
+     * The main method to run the Inquiry Management System interface.
+     *
+     * @param args The command-line arguments (not used in this application)
      */
     public static void main(String[] args) {
         System.out.println("Welcome to the Inquiry Management System");
@@ -63,12 +70,16 @@ public class InquirerInterface {
         }
     }
     
-    /** 
-     * @param connection
-     * @param firstName
-     * @param lastName
-     * @param phoneNumber
-     * @throws SQLException
+    /**
+     * Logs a new inquiry into the database.
+     *
+     * @param connection The database connection
+     * @param firstName   The first name of the inquirer
+     * @param lastName    The last name of the inquirer
+     * @param phoneNumber The phone number of the inquirer
+     * @param details     The details of the inquiry
+     * @return True if the inquiry was logged successfully, false otherwise
+     * @throws SQLException if a database access error occurs
      */
     static boolean logNewInquiry(Connection connection, String firstName, String lastName, String phoneNumber, String details) throws SQLException {
         // Checking to see if the inquirer already exists
@@ -135,6 +146,14 @@ public class InquirerInterface {
         return false;
     }
 
+    /**
+     * Searches for an inquirer by name in the database.
+     *
+     * @param connection The database connection
+     * @param searchTerm The name (or part of the name) to search for
+     * @return A string representation of the search results
+     * @throws SQLException if a database access error occurs
+     */
     static String searchForInquirer(Connection connection, String searchTerm) throws SQLException {
         String searchQuery = "SELECT * FROM INQUIRER WHERE LOWER(firstname) LIKE ? OR LOWER(lastname) LIKE ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
@@ -156,6 +175,11 @@ public class InquirerInterface {
         return "";
     }
 
+    /**
+     * Setter method to set the list of inquirers.
+     *
+     * @param inquirers The list of inquirers to set
+     */
     public static void setInquirers(List<Inquirer> inquirers) {
         InquirerInterface.inquirers = inquirers;
     }

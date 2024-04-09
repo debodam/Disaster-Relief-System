@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class represents a victim of a disaster with associated personal and medical information.
+ */
 public class DisasterVictim {
     private static int counter = 0;
 
@@ -185,7 +188,10 @@ public class DisasterVictim {
         this.dietaryInitiatives = dietaryInitiatives;
     }
 
-
+    /**
+     * Adds a personal belonging to the victim's list of personal belongings.
+     * @param supply The supply to add.
+     */
     public void addPersonalBelonging(Supply supply) {
         if (supply.getQuantity() > 0) {
             supply.setQuantity(supply.getQuantity() - 1); //Once the supply is added to the disaster victim, it is removed from supplies
@@ -193,13 +199,19 @@ public class DisasterVictim {
         }
     }
 
-
+    /**
+     * Removes a personal belonging from the victim's list of personal belongings.
+     * @param unwantedSupply The supply to remove.
+     */
     public void removePersonalBelonging(Supply unwantedSupply) {
         unwantedSupply.setQuantity(unwantedSupply.getQuantity() + 1); //Once the supply is removed from the disaster victim, it is added back to supplies
         this.personalBelongings.remove(unwantedSupply);
     }
 
-
+    /**
+     * Removes a family connection from the victim's list of family connections.
+     * @param exRelation The family relation to remove.
+     */
     public void removeFamilyConnection(FamilyRelation exRelation) {
         DisasterVictim personOne = exRelation.getPersonOne();
         DisasterVictim personTwo = exRelation.getPersonTwo();
@@ -257,7 +269,10 @@ public class DisasterVictim {
         }
     }
 
-
+    /**
+     * Adds a family connection to the victim's list of family connections.
+     * @param record The family relation to add.
+     */
     public void addFamilyConnection(FamilyRelation record) {
         // Add to all of current victim's relations
         for (FamilyRelation relation: familyConnections) {
@@ -320,27 +335,43 @@ public class DisasterVictim {
         record.getPersonTwo().familyConnections.add(record);
     }
 
-
+    /**
+     * Gets the entry date of the victim.
+     * @return The entry date.
+     */
     public String getEntryDate() {
         return entryDate;
     }
 
-
+    /**
+     * Gets the comments associated with the victim.
+     * @return The comments.
+     */
     public String getComments() {
         return comments;
     }
 
-
+    /**
+     * Sets the comments associated with the victim.
+     * @param comments The comments to set.
+     */
     public void setComments(String comments) {
         this.comments = comments;
     }
 
-
+    /**
+     * Gets the gender of the victim.
+     * @return The gender.
+     */
     public String getGender() {
         return gender;
     }
 
-
+    /**
+     * Sets the gender of the victim.
+     * @param gender The gender to set.
+     * @throws IllegalArgumentException If an invalid gender value is provided.
+     */
     public void setGender(String gender) {
         try {
             boolean valid = false;
@@ -362,6 +393,9 @@ public class DisasterVictim {
         }
     }
 
+    /**
+     * Enumerates the dietary initiatives available for the victim.
+     */
     static enum DietaryInitiative {
         ASIAN_VEGETARIAN("Asian vegetarian meal"),
         DIABETIC("Diabetic meal"),
@@ -378,11 +412,20 @@ public class DisasterVictim {
         DietaryInitiative(String description) {
             this.description = description;
         }
-    
+
+        /**
+         * Gets the description of the dietary initiative.
+         * @return The description.
+         */
         public String getDescription() {
             return description;
         }
-    
+        /**
+         * Converts a string to a DietaryInitiative enum value.
+         * @param text The text to convert.
+         * @return The corresponding DietaryInitiative enum value.
+         * @throws IllegalArgumentException If no matching dietary initiative is found.
+         */ 
         public static DietaryInitiative fromString(String text) {
             for (DietaryInitiative initiative : DietaryInitiative.values()) {
                 if (initiative.name().equalsIgnoreCase(text)) {

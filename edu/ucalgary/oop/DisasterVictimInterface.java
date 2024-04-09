@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class represents an interface for managing disaster victim information.
+ */
 public class DisasterVictimInterface {
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<DisasterVictim> victims = new ArrayList<>();
 
     
-    /** 
-     * @param args
+    /**
+     * Main method to run the Disaster Victim Information System.
+     * @param args Command-line arguments (not used in this application)
      */
     public static void main(String[] args) {
         System.out.println("Welcome to the Disaster Victim Information System");
@@ -42,6 +46,9 @@ public class DisasterVictimInterface {
         }
     }
 
+    /**
+     * Method to enter details for a new Disaster Victim and add to the list.
+     */
     private static void enterNewDisasterVictim() {
         System.out.println("\nEnter details for the new Disaster Victim:");
 
@@ -70,6 +77,9 @@ public class DisasterVictimInterface {
 
     }
 
+    /**
+     * Method to display all entered Disaster Victims.
+     */
     private static void viewAllDisasterVictims() {
         if (victims.isEmpty()) {
             System.out.println("No Disaster Victims entered yet.");
@@ -84,8 +94,9 @@ public class DisasterVictimInterface {
     }
 
     
-    /** 
-     * @param victim
+    /**
+     * Method to display details of a single Disaster Victim.
+     * @param victim The DisasterVictim object to display details for
      */
     private static void displayVictimDetails(DisasterVictim victim) {
         System.out.println("First Name: " + victim.getFirstName());
